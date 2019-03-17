@@ -15,6 +15,7 @@ public class RegistrationService {
     }
 
     public String registration(String login, String pass){
+
         return "wrong try";
     }
 }

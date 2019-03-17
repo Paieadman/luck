@@ -13,7 +13,6 @@ public class Ord {
     private int user;
     private String date;
     private int status;
-    private String dishes;
 
     public Ord() {
     }
@@ -22,7 +21,6 @@ public class Ord {
         this.user = user;
         this.date = date;
         this.status = status;
-        this.dishes = dishes;
     }
 
     public int getId() {
@@ -55,13 +53,5 @@ public class Ord {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public String getDishes() {
-        return dishes;
-    }
-
-    public void setDishes(String dishes) {
-        this.dishes = dishes;
     }
 }

@@ -3,6 +3,7 @@ package com.company.controller;
 import com.company.service.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +14,7 @@ public class AuthorizationController {
     @Autowired
     private AuthorizationService authorizationService;
 
-    @RequestMapping("/authorization")
+    @PostMapping("/authorization")
     public String authorization(String login, String pass){
         return authorizationService.authorization(login,pass);
     }
