@@ -1,12 +1,10 @@
 package com.company.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Ord {
+@Table(name = "orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -14,10 +12,10 @@ public class Ord {
     private String date;
     private int status;
 
-    public Ord() {
+    public Order() {
     }
 
-    public Ord(int user, String date, int status, String dishes) {
+    public Order(int user, String date, int status) {
         this.user = user;
         this.date = date;
         this.status = status;

@@ -17,6 +17,7 @@ public class RegistrationController {
 
     @RequestMapping("/registration")
     public String registration(String login, String pass){
+
         return registrationService.registration(login,pass);
     }
 }

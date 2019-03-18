@@ -13,6 +13,8 @@ import java.util.List;
 
 @Controller
 public class AuthorizationService {
+    @Autowired
+    private UserRepository userRepository;
     public AuthorizationService() {
 
     }
@@ -20,7 +22,7 @@ public class AuthorizationService {
 //    @Autowired
 //    private UserRepository userRepository;
 
-    public String authorization(String login, String pass) {
+    public Boolean authorization(String login, String pass) {
 //        Object user = userRepository.findByNameAndPassword(login, pass);
 //        if(userRepository.equals(null)) {
 //            return "hello";
@@ -28,6 +30,11 @@ public class AuthorizationService {
 //            return "ok";
 //        }
 //    }
-        return "hi";
+        User usr = userRepository.findByNameAndPassword(login,pass).get();
+        if (login.equals(usr.getLogin()) && pass.equals(usr.getPassword())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

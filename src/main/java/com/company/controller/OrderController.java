@@ -1,5 +1,5 @@
 package com.company.controller;
-import com.company.entity.Ord;
+import com.company.entity.Order;
 import com.company.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +13,18 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping("/orders")
-    public List<Ord> getOrders(){
+    public List<Order> getOrders(){
         return orderService.getOrders();
     }
 
-    @PostMapping("/orders/add")
-    public void add(@RequestBody Ord order){
-        orderService.addOrder(order);
-    }
+//    @PostMapping("/orders/add")
+//    public Order add(@RequestBody Order order){
+//        return orderService.addOrder(order);
+//    }
+        @RequestMapping("/orders/add")
+        public Integer add(){
+            return orderService.addOrder();
+        }
 
     @RequestMapping("/orders/{id}/remove")
     public String remove(@PathVariable int id){ return orderService.removeOrder(id);}

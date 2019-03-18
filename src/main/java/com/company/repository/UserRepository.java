@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends CrudRepository<User,Integer> {
-   @Query("SELECT u from User u where u.name=?1 and u.password=?2")
-   User findByNameAndPassword(String name, String password);
+   @Query("SELECT u from User u where u.login=?1 and u.password=?2")
+   Optional<User> findByNameAndPassword(String login, String password);
 //    User findByPassword();
    @Query("select u from User u where u.name=?1")
-   User findUserByName(String name);
+   Optional<User> findUserByName(String name);
 }

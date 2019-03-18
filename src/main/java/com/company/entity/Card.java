@@ -1,20 +1,22 @@
 package com.company.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+
 
 @Entity
-public class Bin {
+@Table(name = "card")
+public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int order;
+    private int orderId;
     private int dish;
 
-    public Bin(int order, int dish) {
-        this.order = order;
+    public Card() { }
+
+    public Card(int orderId, int dish) {
+        this.orderId = orderId;
         this.dish = dish;
     }
 
@@ -26,12 +28,12 @@ public class Bin {
         this.id = id;
     }
 
-    public int getOrder() {
-        return order;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public int getDish() {

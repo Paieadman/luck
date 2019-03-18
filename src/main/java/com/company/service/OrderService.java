@@ -1,33 +1,42 @@
 package com.company.service;
 
-import com.company.entity.Ord;
-import com.company.repository.OrdRepository;
+import com.company.entity.Order;
+import com.company.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class OrderService {
    @Autowired
-   private OrdRepository orderRepository;
+   private OrderRepository orderRepository;
 
     public OrderService(){
 
     }
 
-    public List<Ord> getOrders(){
-        Iterable<Ord> orders = orderRepository.findAll();
-        List<Ord> ord = new ArrayList<Ord>();
+    public List<Order> getOrders(){
+        Iterable<Order> orders = orderRepository.findAll();
+        List<Order> ord = new ArrayList<Order>();
         orders.forEach(
                 (n)->ord.add(n)
         );
         return ord;
     }
 
-    public void addOrder(Ord order) {
+    public Integer addOrder() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        Order order = new Order(1, dateFormat.format(date).toString(), 1);
         orderRepository.save(order);
+        order = orderRepository.findByDate(dateFormat.format(date).toString()).get();
+        System.out.println(order.getId());
+        return order.getId();
     }
 
     public String removeOrder(int id){
