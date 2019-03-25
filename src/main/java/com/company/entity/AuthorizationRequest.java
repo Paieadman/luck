@@ -2,7 +2,7 @@ package com.company.entity;
 
 public class AuthorizationRequest {
     private String login;
-    private  String password;
+    private String password;
 
     public AuthorizationRequest() {
     }

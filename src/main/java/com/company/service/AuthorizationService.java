@@ -4,37 +4,23 @@ import com.company.entity.User;
 import com.company.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AuthorizationService {
     @Autowired
     private UserRepository userRepository;
+
     public AuthorizationService() {
 
     }
 
-//    @Autowired
-//    private UserRepository userRepository;
-
-    public Boolean authorization(String login, String pass) {
-//        Object user = userRepository.findByNameAndPassword(login, pass);
-//        if(userRepository.equals(null)) {
-//            return "hello";
-//        } else {
-//            return "ok";
-//        }
-//    }
-        User usr = userRepository.findByNameAndPassword(login,pass).get();
-        if (login.equals(usr.getLogin()) && pass.equals(usr.getPassword())) {
-            return true;
-        } else {
-            return false;
+    public Integer authorization(String login, String pass) {
+        Optional<User> user = userRepository.findByLoginAndPassword(login, pass);
+        if (user.isPresent()) {
+            userRepository.updateActive(user.get().getId(), 1);
+            return user.get().getId();
         }
+        return 0;
     }
 }

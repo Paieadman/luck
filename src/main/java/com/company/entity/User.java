@@ -14,12 +14,15 @@ public class User {
     private String role;
     private String login;
     private String password;
+    private int active;
+    private int isBisy;
 
-    public User(String name, String role, String login, String password) {
+    public User(String name, String role, String login, String password, Integer active) {
         this.name = name;
         this.role = role;
         this.login = login;
         this.password = password;
+        this.active = active;
     }
 
     public User(){}
@@ -62,5 +65,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 }

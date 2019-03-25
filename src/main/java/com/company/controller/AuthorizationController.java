@@ -13,8 +13,7 @@ public class AuthorizationController {
     private AuthorizationService authorizationService;
 
     @PostMapping("/authorization")
-    public Boolean authorization(@RequestBody AuthorizationRequest authorizationRequest){
-        System.out.println(authorizationRequest);
+    public Integer authorization(@RequestBody AuthorizationRequest authorizationRequest){
         //return authorizationService.authorization(login,pass);
         return authorizationService.authorization(authorizationRequest.getLogin(),authorizationRequest.getPassword());
     }

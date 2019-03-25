@@ -11,14 +11,16 @@ public class Order {
     private int user;
     private String date;
     private int status;
+    private int cook;
 
     public Order() {
     }
 
-    public Order(int user, String date, int status) {
+    public Order(int user, String date, int status, int cook) {
         this.user = user;
         this.date = date;
         this.status = status;
+        this.cook = cook;
     }
 
     public int getId() {
@@ -51,5 +53,13 @@ public class Order {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getCook() {
+        return cook;
+    }
+
+    public void setCook(int cook) {
+        this.cook = cook;
     }
 }

@@ -28,6 +28,6 @@ public class TestController {
 //    }
     @RequestMapping("/")
     public User test(){
-        return userRepository.findByNameAndPassword("kolya", "qwert" ).get();
+        return userRepository.save(new User("qwerty","qwerty","qwerty","qwerty",1, 1));
     }
 }

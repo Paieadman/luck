@@ -15,12 +15,12 @@ public class CardController {
     private CardService cardService;
 
     @PostMapping("/{order}/add")
-    public void addDish(@PathVariable("order") String order, Integer dish) {
+    public void addDish(@PathVariable("order") String order, @RequestBody Integer dish) {
         System.out.println("it had come");
         cardService.addInBin(Integer.parseInt(order), dish);
     }
 
-    @PostMapping("/{order}/get/all")
+    @RequestMapping("/{order}/get/all")
     public List<Dish> getDishInBin(@PathVariable("order") int order) {
         return cardService.getDishInBin(order);
     }
