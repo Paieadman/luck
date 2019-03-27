@@ -26,8 +26,4 @@ public class TestController {
 //        return orderRepository.findAll();
 //        //orderRepository.save(new Order( 1,dateFormat.format(date).toString(),2,"1,2,3,4,5"));
 //    }
-    @RequestMapping("/")
-    public User test(){
-        return userRepository.save(new User("qwerty","qwerty","qwerty","qwerty",1, 1));
-    }
 }

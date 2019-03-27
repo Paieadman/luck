@@ -27,9 +27,4 @@ public interface UserRepository extends CrudRepository<User,Integer> {
    @Query("select u from User u where u.id = ?1")
    Optional<User> getActiveById(int id);
 
-   @Query("select u from User u where u.role='COOK' and u.active=1 and u.isBisy = 0 ")
-   Iterable<User> findAllByRoleAndIsBisyAndActive();
-
-   @Query("select u from User u where u.role='COOK' and u.active=1")
-   Iterable<User> findAllByRoleAndActive();
 }

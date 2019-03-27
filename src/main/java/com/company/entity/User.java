@@ -15,7 +15,6 @@ public class User {
     private String login;
     private String password;
     private int active;
-    private int isBisy;
 
     public User(String name, String role, String login, String password, Integer active) {
         this.name = name;

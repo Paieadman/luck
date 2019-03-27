@@ -1,4 +1,5 @@
 package com.company.controller;
+import com.company.entity.Dish;
 import com.company.entity.Order;
 import com.company.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,18 @@ public class OrderController {
         return orderService.getOrders(id);
     }
 
-//    @PostMapping("/orders/add")
-//    public Order add(@RequestBody Order order){
-//        return orderService.addOrder(order);
-//    }
-        @RequestMapping("/orders/add/{id}")
-        public Integer add(@PathVariable("id") String id){
+    @GetMapping("orders/{id}/performed")
+    public List<Order> getPerformed(@PathVariable String id){
+        return orderService.getPerformed(id);
+    }
+
+    @GetMapping("orders/{id}/all")
+    public List<Order> getOrdersForId(@PathVariable String id){
+        return orderService.getOrdersForId(id);
+    }
+
+    @RequestMapping("/orders/add/{id}")
+    public Integer add(@PathVariable("id") String id){
             return orderService.addOrder(Integer.parseInt(id));
         }
 
@@ -42,4 +49,15 @@ public class OrderController {
         System.out.println("i here");
         return orderService.updateStatus(id);
     }
+
+    @RequestMapping("get/order/{id}")
+    public Integer getCurrentOrder(@PathVariable("id") String id) {
+    return orderService.getCurrentOrder(Integer.parseInt(id));
+    }
+
+    @RequestMapping("get/cards/{id}")
+    public List<Dish> getDishesFromOrder(@PathVariable("id") String id) {
+        return orderService.getDishesFromOrder(Integer.parseInt(id));
+    }
+
 }

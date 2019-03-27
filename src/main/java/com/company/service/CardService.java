@@ -45,4 +45,7 @@ public class CardService {
     }
 
 
+    public void confirm(int id) {
+        cardRepository.updateOrderToConfirmed(id);
+    }
 }

@@ -17,6 +17,6 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public Integer registration(@RequestBody User user){
-        return registrationService.registration(user.getName(), user.getRole(), user.getLogin(), user.getPassword(), user.getActive(), user.getIsBisy());
+        return registrationService.registration(user.getName(), user.getRole(), user.getLogin(), user.getPassword(), user.getActive());
     }
 }

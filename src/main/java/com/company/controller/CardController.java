@@ -34,4 +34,9 @@ public class CardController {
     public List<String> getNamesOfDishes(@PathVariable int bin) {
         return cardService.getNamesOfDishes(bin);
     }
+
+    @RequestMapping("/confirm/{id}")
+    public void confirm(@PathVariable("id") String id) {
+        cardService.confirm(Integer.parseInt(id));
+    }
 }

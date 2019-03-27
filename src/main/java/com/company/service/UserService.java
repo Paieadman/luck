@@ -1,9 +1,9 @@
 package com.company.service;
 
+import com.company.entity.PersonalData;
 import com.company.entity.User;
 import com.company.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 
 import java.util.Optional;
@@ -36,5 +36,9 @@ public class UserService {
             return user.get().getRole();
         }
         return "no";
+    }
+
+    public PersonalData getPersonalData(int id) {
+
     }
 }

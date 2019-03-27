@@ -14,15 +14,17 @@ public class Dish {
     private double cost;
     private String composition;
     private String image;
+    private String category;
 
     public Dish() {
     }
 
-    public Dish(String name, double cost, String composition, String image) {
+    public Dish(String name, double cost, String composition, String image, String category) {
         this.name = name;
         this.cost = cost;
         this.composition = composition;
         this.image = image;
+        this.category = category;
     }
 
     public int getId() {
@@ -63,5 +65,13 @@ public class Dish {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
