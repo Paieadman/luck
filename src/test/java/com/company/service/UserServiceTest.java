@@ -25,10 +25,7 @@ public class UserServiceTest {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private RegistrationService registrationService;
-
+    
     @MockBean
     private UserRepository userRepository;
 
@@ -46,11 +43,11 @@ public class UserServiceTest {
         assertEquals(3, userService.getAllUsers().size());
     }
 
-        @Test
+    @Test
     public void getPersonalData() {
-        PersonalData pd = new PersonalData( 1, "custom", "custom", 1, "custom", "custom", "custom");
+        PersonalData pd = new PersonalData(1, "custom", "custom", 1, "custom", "custom", "custom");
         when(personalDataRepository.findByUser(1)).thenReturn(Optional.of(pd));
-        assertEquals(pd,userService.getPersonalData(1));
+        assertEquals(pd, userService.getPersonalData(1));
     }
 
     @Test

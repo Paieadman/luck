@@ -29,11 +29,9 @@ public class RegistrationService {
     }
 
     public Integer registration(String login, String password, String name, String role, Integer active){
-        userRepository.save(new User(name, role, login, password, active));
-        Integer id = userRepository.findByLoginAndPassword(login,password).get().getId();
+        User user = userRepository.save(new User(name, role, login, password, active));
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        registrationDateRepository.save(new RegistrationDate(id, dateFormat.format(date)));
-        return id;
+        registrationDateRepository.save(new RegistrationDate(user.getId(), dateFormat.format(new Date())));
+        return user.getId();
     }
 }
