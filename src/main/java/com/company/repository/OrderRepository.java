@@ -17,7 +17,7 @@ public interface OrderRepository extends CrudRepository<Order, Integer> {
     @Transactional
     @Modifying
     @Query("update Order u set u.status=u.status+1 where u.id =?1" )
-    Integer updateStatusById(Integer id);
+    Optional<Order> updateStatusById(Integer id);
 
     @Query("select u from Order u where u.cook = ?1")
     Iterable<Order> findOrderByCook(int id);

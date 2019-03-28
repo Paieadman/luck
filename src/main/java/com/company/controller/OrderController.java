@@ -34,7 +34,7 @@ public class OrderController {
         }
 
     @PostMapping("/order/status/update")
-    public Integer updateStatus(@RequestBody int id) {
+    public Order updateStatus(@RequestBody int id) {
         return orderService.updateStatus(id);
     }
 

@@ -44,10 +44,9 @@ public class OrderService {
         return orderRepository.findByDate(dateFormat.format(date).toString()).get().getId();
     }
 
-    public Integer updateStatus(Integer id) {
-        orderRepository.updateStatusById(id);
-        Integer i = orderRepository.findById(id).get().getStatus();
-        return i;
+    public Order updateStatus(Integer id) {
+        Optional<Order> updatedOrder = orderRepository.updateStatusById(id);
+        return updatedOrder.get();
     }
 
     public List<Order> getOrders(String id) {
