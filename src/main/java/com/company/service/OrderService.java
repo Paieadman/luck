@@ -47,7 +47,6 @@ public class OrderService {
     public Integer updateStatus(Integer id) {
         orderRepository.updateStatusById(id);
         Integer i = orderRepository.findById(id).get().getStatus();
-        System.out.println(i);
         return i;
     }
 

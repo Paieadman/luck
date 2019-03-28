@@ -1,6 +1,8 @@
 package com.company.service;
 
+import com.company.entity.PersonalData;
 import com.company.entity.User;
+import com.company.repository.PersonalDataRepository;
 import com.company.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,6 +27,9 @@ public class UserServiceTest {
 
     @MockBean
     private UserRepository userRepository;
+
+    @MockBean
+    private PersonalDataRepository personalDataRepository;
     @Test
     public void getUsersTest() {
         when(userRepository.findAll()).
@@ -34,4 +40,11 @@ public class UserServiceTest {
                         collect(Collectors.toList()));
         assertEquals(3, userService.getAllUsers().size());
     }
+
+//    @Test
+//    public PersonalData getPersonalData() {
+//        PersonalData pd = new PersonalData( 1, "custom", "custom", 1, "custom", "custom", "custom")
+//        when(personalDataRepository.findByUser(1)).thenReturn(pd);
+//        assertEquals(new PersonalData( 1, "custom", "custom", 1, "custom", "custom", "custom"),userService.getPersonalData(1));
+//    }
 }
