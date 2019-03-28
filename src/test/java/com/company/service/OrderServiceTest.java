@@ -27,6 +27,7 @@ public class OrderServiceTest {
     @MockBean
     private OrderRepository orderRepository;
 
+
 //    @Test
 //    public void addOrderTest() {
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -35,4 +36,11 @@ public class OrderServiceTest {
 //        when(orderRepository.save(order)).thenReturn(order);
 //        assertEquals(java.util.Optional.ofNullable(order.getUser()), orderService.addOrder(1));
 //    }
+    @Test
+    public void getCurrentOrderTest() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        Order order = new Order(1, dateFormat.format(date).toString(), 1, 1);
+        when(orderRepository.findOrderByIdAndStatus(order.getId(), 1)).thenReturn()
+    }
 }

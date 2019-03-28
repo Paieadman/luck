@@ -44,7 +44,7 @@ public class UserService {
         if (user.isPresent()) {
             return user.get().getRole();
         }
-        return "no";
+        return null;
     }
 
     public PersonalData getPersonalData(int id) {
