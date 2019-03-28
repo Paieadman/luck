@@ -13,11 +13,6 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-//    @RequestMapping("/orders")
-//    public List<Order> getOrders(){
-//        return orderService.getOrders();
-//    }
-
     @GetMapping("/orders/{id}")
     public List<Order> getOrders(@PathVariable String id){
         return orderService.getOrders(id);
@@ -38,16 +33,14 @@ public class OrderController {
             return orderService.addOrder(Integer.parseInt(id));
         }
 
-    @RequestMapping("/orders/{id}/remove")
-    public String remove(@PathVariable int id){ return orderService.removeOrder(id);}
-
-    @RequestMapping("/orders/{id}/update")
-    public String edit(@PathVariable int id, String value, String pos){ return orderService.updateOrder(id,value,pos);}
-
-    @RequestMapping("/order/{id}/status/update")
-    public Integer updateStatus(@PathVariable int id) {
-        System.out.println("i here");
+    @PostMapping("/order/status/update")
+    public Integer updateStatus(@RequestBody int id) {
         return orderService.updateStatus(id);
+    }
+
+    @GetMapping("{id}/confirm")
+    public void confirm(@PathVariable("id") String id) {
+        orderService.confirm(Integer.parseInt(id));
     }
 
     @RequestMapping("get/order/{id}")
@@ -58,6 +51,11 @@ public class OrderController {
     @RequestMapping("get/cards/{id}")
     public List<Dish> getDishesFromOrder(@PathVariable("id") String id) {
         return orderService.getDishesFromOrder(Integer.parseInt(id));
+    }
+
+    @PostMapping("get/Number/orders")
+    public List<Long> getNumberOfOrders(@RequestBody String id) {
+        return orderService.getNumberOfOrders(Integer.parseInt(id));
     }
 
 }

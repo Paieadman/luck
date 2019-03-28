@@ -31,4 +31,9 @@ public class UserController {
         return userService.getPersonalData(Integer.parseInt(id));
     }
 
+    @PostMapping("/change/personal/data")
+    public void changeInfo(@RequestBody PersonalData personalData){
+        userService.changeInfo(personalData);
+    }
+
 }

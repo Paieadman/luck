@@ -14,7 +14,6 @@ public class AuthorizationController {
 
     @PostMapping("/authorization")
     public Integer authorization(@RequestBody AuthorizationRequest authorizationRequest){
-        //return authorizationService.authorization(login,pass);
         return authorizationService.authorization(authorizationRequest.getLogin(),authorizationRequest.getPassword());
     }
 

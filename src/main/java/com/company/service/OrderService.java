@@ -44,15 +44,6 @@ public class OrderService {
         return orderRepository.findByDate(dateFormat.format(date).toString()).get().getId();
     }
 
-    public String removeOrder(int id) {
-
-        return "deleted";
-    }
-
-    public String updateOrder(int id, String value, String pos) {
-        return "not ok";
-    }
-
     public Integer updateStatus(Integer id) {
         orderRepository.updateStatusById(id);
         Integer i = orderRepository.findById(id).get().getStatus();
@@ -160,5 +151,29 @@ public class OrderService {
         } else {
             return 0;
         }
+    }
+
+    public List<Long> getNumberOfOrders(int id) {
+        List<Long> count = new ArrayList<Long>();
+        count.add(countNumberOfCurrentOrders(id));
+        count.add(countNumberOfPerformedOrders(id));
+        count.add(countNumberOfOrders(id));
+        return count;
+    }
+
+    private Long countNumberOfCurrentOrders(Integer id) {
+        return orderRepository.countNumberOfCurrentOrders(id).get();
+    }
+
+    private Long countNumberOfOrders(Integer id) {
+    return orderRepository.countNumberOfOrders(id).get();
+    }
+
+    private Long countNumberOfPerformedOrders(Integer id) {
+        return orderRepository.countNumberOfPerformedOrders(id).get();
+    }
+
+    public void confirm(int id) {
+        orderRepository.updateOrderToConfirmed(id);
     }
 }

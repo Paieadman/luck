@@ -46,6 +46,20 @@ public interface OrderRepository extends CrudRepository<Order, Integer> {
     @Query("select u from Order u where u.status=2 and u.cook= ?1")
     Iterable<Order> findProcessingOrdersByCook(int id);
 
-    @Query("select u from Order u where u.id=?1 and u.status=?2")
+    @Query("select u from Order u where u.user=?1 and u.status=?2")
     Optional<Order> findOrderByIdAndStatus(int id, int i);
+
+    @Query("select count(o) from Order o where (o.id=?1 or o.cook=?1) and o.status=1" )
+    Optional<Long> countNumberOfCurrentOrders(Integer id);
+
+    @Query("select count(o) from Order o where o.id=?1 or o.cook = ?1")
+    Optional<Long> countNumberOfOrders(Integer id);
+
+    @Query("select count(o) from Order o where (o.id=?1 or o.cook=?1) and o.status>1")
+    Optional<Long> countNumberOfPerformedOrders(Integer id);
+
+    @Transactional
+    @Modifying
+    @Query("update Order u set u.status=2 where u.id=?1")
+    void updateOrderToConfirmed(int id);
 }

@@ -16,7 +16,6 @@ public class CardController {
 
     @PostMapping("/{order}/add")
     public void addDish(@PathVariable("order") String order, @RequestBody Integer dish) {
-        System.out.println("it had come");
         cardService.addInBin(Integer.parseInt(order), dish);
     }
 
@@ -25,7 +24,7 @@ public class CardController {
         return cardService.getDishInBin(order);
     }
 
-    @PostMapping("/{bin}/delete")
+    @PostMapping("/{order}/delete")
     public void deleteDishFromBin(@PathVariable("order") int order, int dish) {
         cardService.deleteDishFromBin(order, dish);
     }
@@ -33,10 +32,5 @@ public class CardController {
     @RequestMapping("/get/{bin}")
     public List<String> getNamesOfDishes(@PathVariable int bin) {
         return cardService.getNamesOfDishes(bin);
-    }
-
-    @RequestMapping("/confirm/{id}")
-    public void confirm(@PathVariable("id") String id) {
-        cardService.confirm(Integer.parseInt(id));
     }
 }

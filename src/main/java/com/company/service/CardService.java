@@ -4,6 +4,7 @@ import com.company.entity.Card;
 import com.company.entity.Dish;
 import com.company.repository.CardRepository;
 import com.company.repository.DishRepository;
+import com.company.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,6 +18,9 @@ public class CardService {
 
     @Autowired
     private CardRepository cardRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     public void addInBin(int order, Integer dish) {
         cardRepository.save(new Card(order, dish));
@@ -45,7 +49,5 @@ public class CardService {
     }
 
 
-    public void confirm(int id) {
-        cardRepository.updateOrderToConfirmed(id);
-    }
+
 }
