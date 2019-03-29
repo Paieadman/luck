@@ -4,9 +4,3 @@ sudo dpkg --install mysql-apt-config_0.7.3-1_all.deb
 sudo apt-get update -q
 sudo apt-get install -q -y --allow-unauthenticated -o Dpkg::Options::=--force-confnew mysql-server
 sudo mysql_upgrade
-services:
-  - mysql
-sudo: true
-before_script:
-  - bash .travis.install-mysql-5.7.sh
-sudo: true
