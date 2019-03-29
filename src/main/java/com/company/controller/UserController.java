@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.entity.PersonalData;
+import com.company.entity.User;
 import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +22,9 @@ public class UserController {
             userService.exit(Integer.parseInt(id));
     }
 
-    @GetMapping("/get/role/{id}")
-    public String getRole(@PathVariable("id") String id) {
-        return userService.getRole(Integer.parseInt(id));
+    @RequestMapping("/get/role/{id}")
+    public User getUser(@PathVariable("id") String id) {
+        return userService.getUser(Integer.parseInt(id));
     }
 
     @PostMapping("/get/personal/data")

@@ -43,7 +43,7 @@ public interface OrderRepository extends CrudRepository<Order, Integer> {
     @Query("select u from Order u where u.status=2 and u.id = ?1")
     Iterable<Order> findAllProcessingOrdersById(int id);
 
-    @Query("select u from Order u where u.status=2 and u.cook= ?1")
+    @Query("select u from Order u where u.status=2 and u.cook=0")
     Iterable<Order> findProcessingOrdersByCook(int id);
 
     @Query("select u from Order u where u.user=?1 and u.status=?2")

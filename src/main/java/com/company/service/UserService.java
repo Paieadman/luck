@@ -39,10 +39,10 @@ public class UserService {
         userRepository.updateActive(id,0);
     }
 
-    public String getRole(Integer id) {
+    public User getUser(Integer id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent()) {
-            return user.get().getRole();
+            return user.get();
         }
         return null;
     }

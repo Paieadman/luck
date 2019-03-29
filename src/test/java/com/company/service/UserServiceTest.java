@@ -61,6 +61,6 @@ public class UserServiceTest {
     public void getRoleTest() {
         User user = new User("365", "ADMIN", "role", "login", 1);
         when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
-        assertEquals("ADMIN", userService.getRole(user.getId()));
+        assertEquals("ADMIN", userService.getUser(user.getId()).getRole());
     }
 }
