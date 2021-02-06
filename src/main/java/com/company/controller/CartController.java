@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
-public class CardController {
+public class CartController {
 
     @Autowired
     private CardService cardService;
@@ -25,7 +25,7 @@ public class CardController {
     }
 
     @PostMapping("/{order}/delete")
-    public void deleteDishFromBin(@PathVariable("order") int order, int dish) {
+    public void deleteDishFromBin(@PathVariable("order") int order, Dish dish) {
         cardService.deleteDishFromBin(order, dish);
     }
 

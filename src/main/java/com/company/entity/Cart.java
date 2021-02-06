@@ -5,17 +5,18 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "card")
-public class Card {
+@Table(name = "cart")
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int orderId;
     private int dish;
 
-    public Card() { }
+    public Cart() {
+    }
 
-    public Card(int orderId, int dish) {
+    public Cart(int orderId, int dish) {
         this.orderId = orderId;
         this.dish = dish;
     }

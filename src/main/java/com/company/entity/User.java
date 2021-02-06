@@ -15,16 +15,19 @@ public class User {
     private String login;
     private String password;
     private int active;
+    private String registrationDate;
 
-    public User(String name, String role, String login, String password, Integer active) {
+    public User(String name, String role, String login, String password, Integer active, String registrationDate) {
         this.name = name;
         this.role = role;
         this.login = login;
         this.password = password;
         this.active = active;
+        this.registrationDate = registrationDate;
     }
 
-    public User(){}
+    public User() {
+    }
 
     public int getId() {
         return id;
@@ -72,5 +75,13 @@ public class User {
 
     public void setActive(int active) {
         this.active = active;
+    }
+
+    public String getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

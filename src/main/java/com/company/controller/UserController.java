@@ -1,10 +1,12 @@
 package com.company.controller;
 
-import com.company.entity.PersonalData;
-import com.company.entity.User;
+import com.company.entity.*;
 import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.smartcardio.Card;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -19,11 +21,11 @@ public class UserController {
 
     @PostMapping("/exit")
     public void exit(@RequestBody String id) {
-            userService.exit(Integer.parseInt(id));
+        userService.exit(Integer.parseInt(id));
     }
 
     @RequestMapping("/get/role/{id}")
-    public User getUser(@PathVariable("id") String id) {
+    public DtoString getUser(@PathVariable("id") String id) {
         return userService.getUser(Integer.parseInt(id));
     }
 
@@ -33,8 +35,16 @@ public class UserController {
     }
 
     @PostMapping("/change/personal/data")
-    public void changeInfo(@RequestBody PersonalData personalData){
+    public void changeInfo(@RequestBody PersonalData personalData) {
         userService.changeInfo(personalData);
     }
+
+    @RequestMapping("/get/photo")
+    public List<String> getPhoto() {
+        return userService.getPhoto();
+    }
+
+    @PostMapping("/add/history")
+    public int addHistory(@RequestBody AuthorizationRequest authorizationRequest ) { return userService.addHistory(Integer.parseInt(authorizationRequest.getLogin()), authorizationRequest.getPassword());}
 
 }

@@ -1,10 +1,7 @@
 package com.company.service;
 
-import com.company.entity.Order;
-import com.company.entity.PersonalData;
-import com.company.entity.User;
-import com.company.repository.PersonalDataRepository;
-import com.company.repository.UserRepository;
+import com.company.entity.*;
+import com.company.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -20,12 +17,21 @@ public class UserService {
     @Autowired
     private PersonalDataRepository personalDataRepository;
 
+    @Autowired
+    private PhotoRepository photoRepository;
+
+    @Autowired
+    private HistoryRepository historyRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
     public Boolean isActive(int id) {
         if (id == 0)
             return false;
-        Optional<User> user =  userRepository.getActiveById(id);
+        Optional<User> user = userRepository.getActiveById(id);
         if (user.isPresent()) {
-            if (user.get().getActive()==1) {
+            if (user.get().getActive() == 1) {
                 return true;
             } else {
                 return false;
@@ -36,13 +42,13 @@ public class UserService {
     }
 
     public void exit(int id) {
-        userRepository.updateActive(id,0);
+        userRepository.updateActive(id, 0);
     }
 
-    public User getUser(Integer id) {
+    public DtoString getUser(Integer id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent()) {
-            return user.get();
+            return new DtoString(user.get().getRole());
         }
         return null;
     }
@@ -57,7 +63,7 @@ public class UserService {
     }
 
     public void changeInfo(PersonalData personalData) {
-        if(personalDataRepository.findById(personalData.getId()).isPresent()) {
+        if (personalDataRepository.findByUser(personalData.getId()).isPresent()) {
             personalDataRepository.updatePersonalData(personalData.getId(),
                     personalData.getUser(), personalData.getFirstname(),
                     personalData.getSurname(), personalData.getAge(), personalData.getMobileNumber(),
@@ -74,5 +80,21 @@ public class UserService {
                 (user) -> userList.add(user)
         );
         return userList;
+    }
+
+    public List<String> getPhoto() {
+        Iterable<Photo> d = photoRepository.findAll();
+        List<String> lst = new ArrayList<>();
+        d.forEach((hey) -> {
+            lst.add(hey.getPhoto());
+        });
+        return lst;
+    }
+
+    public int addHistory(int orderId, String customer) {
+        Optional<Customer> cus = customerRepository.findByMail(customer);
+        History val = historyRepository.save(new History(orderId, cus.get().getId()));
+        System.out.println(val);
+        return val.getId();
     }
 }

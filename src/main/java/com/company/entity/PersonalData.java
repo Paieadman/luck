@@ -18,7 +18,8 @@ public class PersonalData {
     private String mobileNumber;
     private String avatar;
 
-    public PersonalData(){}
+    public PersonalData() {
+    }
 
     public PersonalData(int user, String firstname, String surname, int age, String sex, String mobileNumber, String avatar) {
         this.user = user;

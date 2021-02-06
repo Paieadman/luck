@@ -6,18 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Status {
+public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String type;
+    private String photo;
 
-    public Status() {
+    public Photo(String photo) {
+        this.photo = photo;
     }
 
-    public Status(int id, String type) {
-        this.id = id;
-        this.type = type;
+    public Photo() {
     }
 
     public int getId() {
@@ -28,11 +27,11 @@ public class Status {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

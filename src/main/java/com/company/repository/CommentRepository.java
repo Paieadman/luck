@@ -1,0 +1,8 @@
+package com.company.repository;
+
+import com.company.entity.Comment;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CommentRepository extends CrudRepository<Comment, Integer> {
+
+}

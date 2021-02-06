@@ -6,33 +6,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Role {
+public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String type;
+    private int Id;
+    private String image;
 
-    public Role(int id, String type) {
-        this.id = id;
-        this.type = type;
-    }
-
-    public Role() {
+    public Sale(String image) {
+        this.image = image;
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getImage() {
+        return image;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
